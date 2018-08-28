@@ -1,0 +1,18 @@
+name: feSFUD
+type: src
+files:
+    includes:
+        feSFUD:
+        - SFUD/sfud/inc
+    sources:
+        feSFUD:
+        - SFUD/sfud/src
+portable:
+    config:
+    - SFUD/sfud/inc/sfud_cfg.h
+    port:
+    - SFUD/sfud/port
+required:
+    feCMSIS:
+    feHAL:
+    feDriver:

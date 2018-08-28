@@ -1,0 +1,3 @@
+[submodule "SFUD"]
+	path = SFUD
+	url = https://github.com/armink/SFUD.git
