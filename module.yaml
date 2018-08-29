@@ -1,5 +1,8 @@
 name: feSFUD
 type: src
+common:
+    macros:
+        - FE_USE_DRIVER_NAME=1
 files:
     includes:
         feSFUD:
