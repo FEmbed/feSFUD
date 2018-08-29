@@ -9,9 +9,9 @@ files:
         - SFUD/sfud/src
 portable:
     config:
-    - SFUD/sfud/inc/sfud_cfg.h
+    - fe_port/sfud_cfg.h
     port:
-    - SFUD/sfud/port
+    - fe_port/sfud_port.cpp
 required:
     feCMSIS:
     feHAL:
