@@ -98,6 +98,8 @@ sfud_err sfud_spi_port_init(sfud_flash *flash) {
     return result;
 }
 ```
+## 更多FastEmbedded ##
+> 进行中...
 
 ## 更多SFUD用法 ##
 > [请转到armink/SFUD](https://github.com/armink/SFUD "armink/SFUD") 
