@@ -1,0 +1,6 @@
+config SFUD
+    bool "Enable SFUD module for SPI flash driver"
+    default y
+    help
+        SFUD driver has provide a common spi flash operation lay.
+        User must add configuration in App.h

@@ -1,6 +1,8 @@
 #
 # Component Makefile
 #
+ifdef CONFIG_SFUD
+
 # flags for component's makefile.
 CPPFLAGS += -DFE_USE_DRIVER_NAME=1
 
@@ -10,3 +12,5 @@ COMPONENT_ADD_INCLUDEDIRS += SFUD/sfud/inc
 
 COMPONENT_SRCDIRS += port
 COMPONENT_SRCDIRS += SFUD/sfud/src
+
+endif

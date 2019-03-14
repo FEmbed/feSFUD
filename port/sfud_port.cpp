@@ -34,6 +34,10 @@
 #error feSFUD need set FE_USE_DRIVER_NAME = 1!
 #endif
 
+#if USE_OSLIB
+#include "osTask.h"
+#endif
+
 ////////////////////////////////////////////////////////////////////////////////
 ///                         SFUD CFG TEMPL
 /// .name: if your flash has cs pin, please use cs pin object name.
@@ -89,7 +93,11 @@ static void spi_unlock(const sfud_spi *spi) {
 }
 
 static void retry_delay_100us(void) {
+#if USE_OSLIB
+    fastembedded::osDelay(1);
+#else
     fe_delay(0);
+#endif
 }
 
 sfud_err sfud_spi_port_init(sfud_flash *flash) {
@@ -97,7 +105,8 @@ sfud_err sfud_spi_port_init(sfud_flash *flash) {
     switch (flash->index) {
         case SFUD_DEVICE_1ST: {
             //TODO user MUST NOT delete sfud flash object when it use for SFUD.
-            fastembedded::SPI *sfud_spi = (fastembedded::SPI *)fastembedded::BaseDriver::findDriverByName(flash->spi.name);
+            fastembedded::SPI *sfud_spi =
+                    (fastembedded::SPI *)fastembedded::BaseDriver::findDriverByName(flash->spi.name);
             assert(sfud_spi);
 
             /* 同步 Flash 移植所需的接口及数据 */
