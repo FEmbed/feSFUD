@@ -29,7 +29,7 @@
 #ifndef _SFUD_CFG_H_
 #define _SFUD_CFG_H_
 
-// include fastembedded driver header.
+// include FEmbed driver header.
 #include "driver.h"
 #if 1
 // all user define must in app.h

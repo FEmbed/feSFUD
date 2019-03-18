@@ -4,7 +4,7 @@
 # 移植说明 #
 ## sfud_cfg.h一些说明 ##
 ``` c
-// include fastembedded driver header.
+// include FEmbed driver header.
 #include "driver.h"     ///< feDriver的驱动头文件，log_d/log_i的处理在里面
 
 #define SFUD_DEBUG_MODE
@@ -41,7 +41,7 @@ extern "C"
  */
 static sfud_err spi_write_read(const sfud_spi *spi, const uint8_t *write_buf, size_t write_size, uint8_t *read_buf, size_t read_size) {
     sfud_err result = SFUD_SUCCESS;
-    fastembedded::SPI * sfud_spi = static_cast<fastembedded::SPI *>(spi->user_data);
+    FEmbed::SPI * sfud_spi = static_cast<FEmbed::SPI *>(spi->user_data);
     if(sfud_spi != NULL)
     {
         if(sfud_spi->readAfterWrite(SFUD_DEVICE_1ST_CS, (uint8_t*) write_buf, write_size,
@@ -56,7 +56,7 @@ static sfud_err spi_write_read(const sfud_spi *spi, const uint8_t *write_buf, si
 }
 
 static void spi_lock(const sfud_spi *spi) {
-    fastembedded::SPI * sfud_spi = static_cast<fastembedded::SPI *>(spi->user_data);
+    FEmbed::SPI * sfud_spi = static_cast<FEmbed::SPI *>(spi->user_data);
     if(sfud_spi != NULL)
     {
         sfud_spi->lock();
@@ -64,7 +64,7 @@ static void spi_lock(const sfud_spi *spi) {
 }
 
 static void spi_unlock(const sfud_spi *spi) {
-    fastembedded::SPI * sfud_spi = static_cast<fastembedded::SPI *>(spi->user_data);
+    FEmbed::SPI * sfud_spi = static_cast<FEmbed::SPI *>(spi->user_data);
     if(sfud_spi != NULL)
     {
         sfud_spi->unlock();
@@ -80,7 +80,7 @@ sfud_err sfud_spi_port_init(sfud_flash *flash) {
     switch (flash->index) {
         case SFUD_DEVICE_1ST: {
             //TODO user MUST NOT delete sfud flash object when it use for SFUD.
-            fastembedded::SPI *sfud_spi = (fastembedded::SPI *)fastembedded::BaseDriver::findDriverByName(flash->spi.name);
+            FEmbed::SPI *sfud_spi = (FEmbed::SPI *)FEmbed::BaseDriver::findDriverByName(flash->spi.name);
             assert(sfud_spi);
 
             /* 同步 Flash 移植所需的接口及数据 */
