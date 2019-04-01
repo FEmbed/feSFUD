@@ -111,7 +111,11 @@ namespace FEmbed
 
     SFUD::~SFUD()
     {
-
+        /**
+         * `SPI` and `CS` references cannot be deleted here to prevent
+         * other modules from continuing to use them
+         */
+        //TODO
     }
 
     bool SFUD::erase(uint32_t addr, size_t size)
