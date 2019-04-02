@@ -31,31 +31,23 @@
 
 // include FEmbed driver header.
 #include "driver.h"
-#if 1
+
 // all user define must in app.h
 #include "app.h"
-#else
+
 #define SFUD_DEBUG_MODE
-#define SFUD_DEBUG log_d
-#define SFUD_INFO  log_i
-
 #define SFUD_USING_SFDP
-
 #define SFUD_USING_FLASH_INFO_TABLE
-enum {
-    SFUD_DEVICE_1ST = 0,
-};
 
-#define SFUD_DEVICE_1ST_NAME "W25Q64BV"
-#define SFUD_DEVICE_1ST_CS   "W25Q64BV_CS"
-#define SFUD_DEVICE_1ST_SPI  "SPI1"
-
-/*| name | mf_id | type_id | capacity_id | capacity | write_mode | erase_gran | erase_gran_cmd |*/
-#define SFUD_FLASH_DEVICE_TABLE                                            \
-{                                                                          \
-    [SFUD_DEVICE_1ST] = {.name = SFUD_DEVICE_1ST_NAME, .spi.name = SFUD_DEVICE_1ST_SPI, .chip = \
-            {"W25Q64BV", SFUD_MF_ID_WINBOND, 0x40, 0x17, 8L*1024L*1024L, SFUD_WM_PAGE_256B, 4096, 0x20},  \
-                        },           \
-}
+#ifndef SFUD_DEBUG
+#define SFUD_DEBUG log_d
 #endif
+#ifndef SFUD_INFO
+#define SFUD_INFO  log_i
+#endif
+
+#ifndef SFUD_FLASH_DEVICE_TABLE
+#define SFUD_FLASH_DEVICE_TABLE {}
+#endif
+
 #endif /* _SFUD_CFG_H_ */
